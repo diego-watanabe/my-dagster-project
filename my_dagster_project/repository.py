@@ -7,6 +7,9 @@ from dagster import (
 )
 from my_dagster_project import assets
 from my_dagster_project.resources import github_api
+from dotenv import load_dotenv
+
+load_dotenv()
 
 daily_job = define_asset_job(name="daily_refresh", selection="*")
 daily_schedule = ScheduleDefinition(
