@@ -11,11 +11,9 @@ import jupytext
 
 from github import InputFileContent
 
-ACCESS_TOKEN = "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"
-
-@asset
-def github_stargazers():
-    return list(Github(ACCESS_TOKEN).get_repo("dagster-io/dagster").get_stargazers_with_dates())
+@asset(required_resource_keys={"github_api"})
+def github_stargazers(context):
+    return list(context.resources.github_api.get_repo("dagster-io/dagster").get_stargazers_with_dates())
 
 @asset
 def github_stargazers_by_week(github_stargazers):
@@ -50,10 +48,10 @@ def github_stars_notebook(github_stargazers_by_week):
     ExecutePreprocessor().preprocess(nb)
     return nbformat.writes(nb)
 
-@asset
+@asset(required_resource_keys={"github_api"})
 def github_stars_notebook_gist(context, github_stars_notebook):
     gist = (
-        Github(ACCESS_TOKEN)
+        context.resources.github_api
         .get_user()
         .create_gist(
             public=False,
