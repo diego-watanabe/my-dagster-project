@@ -1,0 +1,12 @@
+dagster
+PyGithub
+matplotlib
+pandas
+nbconvert
+nbformat
+ipykernel
+jupytext
+
+[dev]
+dagit
+pytest
