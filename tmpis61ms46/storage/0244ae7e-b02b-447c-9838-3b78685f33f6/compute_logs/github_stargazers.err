@@ -1,0 +1,24 @@
+[32m2022-10-26 04:06:17 -0400[0m - dagster - [34mDEBUG[0m - daily_refresh - 0244ae7e-b02b-447c-9838-3b78685f33f6 - 4772 - github_stargazers - LOGS_CAPTURED - Started capturing logs for step: github_stargazers.
+[32m2022-10-26 04:06:17 -0400[0m - dagster - [34mDEBUG[0m - daily_refresh - 0244ae7e-b02b-447c-9838-3b78685f33f6 - 4772 - github_stargazers - STEP_START - Started execution of step "github_stargazers".
+[32m2022-10-26 04:06:17 -0400[0m - dagster - [34mERROR[0m - [31mdaily_refresh - 0244ae7e-b02b-447c-9838-3b78685f33f6 - 4772 - github_stargazers - STEP_FAILURE - Execution of step "github_stargazers" failed.
+
+dagster._core.errors.DagsterExecutionStepExecutionError: Error occurred while executing op "github_stargazers"::
+
+github.GithubException.BadCredentialsException: 401 {"message": "Bad credentials", "documentation_url": "https://docs.github.com/rest"}
+
+Stack Trace:
+  File "/usr/local/lib/python3.10/site-packages/dagster/_core/execution/plan/utils.py", line 47, in solid_execution_error_boundary
+    yield
+  File "/usr/local/lib/python3.10/site-packages/dagster/_utils/__init__.py", line 430, in iterate_with_context
+    next_output = next(iterator)
+  File "/usr/local/lib/python3.10/site-packages/dagster/_core/execution/plan/compute_generator.py", line 74, in _coerce_solid_compute_fn_to_iterator
+    result = fn(context, **kwargs) if context_arg_provided else fn(**kwargs)
+  File "/Users/diego/my-dagster-project/my_dagster_project/assets/__init__.py", line 16, in github_stargazers
+    return list(context.resources.github_api.get_repo("dagster-io/dagster").get_stargazers_with_dates())
+  File "/usr/local/lib/python3.10/site-packages/github/MainClass.py", line 330, in get_repo
+    headers, data = self.__requester.requestJsonAndCheck("GET", url)
+  File "/usr/local/lib/python3.10/site-packages/github/Requester.py", line 353, in requestJsonAndCheck
+    return self.__check(
+  File "/usr/local/lib/python3.10/site-packages/github/Requester.py", line 378, in __check
+    raise self.__createException(status, responseHeaders, output)
+[0m
