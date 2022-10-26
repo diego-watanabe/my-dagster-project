@@ -1,0 +1,6 @@
+[32m2022-10-26 03:55:11 -0400[0m - dagster - [34mDEBUG[0m - daily_refresh - d274f1b5-c5cb-420a-86e1-1b24a6b1c1e5 - 3410 - github_stargazers - LOGS_CAPTURED - Started capturing logs for step: github_stargazers.
+[32m2022-10-26 03:55:11 -0400[0m - dagster - [34mDEBUG[0m - daily_refresh - d274f1b5-c5cb-420a-86e1-1b24a6b1c1e5 - 3410 - github_stargazers - STEP_START - Started execution of step "github_stargazers".
+[32m2022-10-26 03:55:37 -0400[0m - dagster - [34mDEBUG[0m - daily_refresh - d274f1b5-c5cb-420a-86e1-1b24a6b1c1e5 - 3410 - github_stargazers - STEP_OUTPUT - Yielded output "result" of type "Any". (Type check passed).
+[32m2022-10-26 03:55:37 -0400[0m - dagster - [34mDEBUG[0m - daily_refresh - d274f1b5-c5cb-420a-86e1-1b24a6b1c1e5 - 3410 - github_stargazers - ASSET_MATERIALIZATION - Materialized value github_stargazers.
+[32m2022-10-26 03:55:37 -0400[0m - dagster - [34mDEBUG[0m - daily_refresh - d274f1b5-c5cb-420a-86e1-1b24a6b1c1e5 - 3410 - github_stargazers - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
+[32m2022-10-26 03:55:37 -0400[0m - dagster - [34mDEBUG[0m - daily_refresh - d274f1b5-c5cb-420a-86e1-1b24a6b1c1e5 - 3410 - github_stargazers - STEP_SUCCESS - Finished execution of step "github_stargazers" in 25.87s.

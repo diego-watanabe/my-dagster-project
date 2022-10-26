@@ -34,15 +34,15 @@ def github_stars_notebook(github_stargazers_by_week):
     markdown = f"""
 # Github Stars
 
-    ```python
-    import pickle
-    github_stargazers_by_week = pickle.loads({pickle.dumps(github_stargazers_by_week)!r})
-    ```
-
+```python
+import pickle
+github_stargazers_by_week = pickle.loads({pickle.dumps(github_stargazers_by_week)!r})
+```
 ## Github Stars by Week, last 52 weeks
-    ```python
-    github_stargazers_by_week.tail(52).reset_index().plot.bar(x="week", y="users")
-    ```
+```python
+github_stargazers_by_week.tail(52).reset_index().plot.bar(x="week", y="users")
+```
+
     """
     nb = jupytext.reads(markdown, "md")
     ExecutePreprocessor().preprocess(nb)

@@ -1,0 +1,54 @@
+[32m2022-10-26 03:54:51 -0400[0m - dagster - [34mDEBUG[0m - daily_refresh - 2665c2b1-bf17-4387-aa61-b89c08bd2011 - 3390 - github_stargazers - LOGS_CAPTURED - Started capturing logs for step: github_stargazers.
+[32m2022-10-26 03:54:51 -0400[0m - dagster - [34mDEBUG[0m - daily_refresh - 2665c2b1-bf17-4387-aa61-b89c08bd2011 - 3390 - github_stargazers - STEP_START - Started execution of step "github_stargazers".
+[32m2022-10-26 03:54:51 -0400[0m - dagster - [34mERROR[0m - [31mdaily_refresh - 2665c2b1-bf17-4387-aa61-b89c08bd2011 - 3390 - github_stargazers - STEP_FAILURE - Execution of step "github_stargazers" failed.
+
+dagster._core.errors.DagsterExecutionInterruptedError
+
+Stack Trace:
+  File "/usr/local/lib/python3.10/site-packages/dagster/_core/execution/plan/execute_plan.py", line 225, in dagster_event_sequence_for_step
+    for step_event in check.generator(step_events):
+  File "/usr/local/lib/python3.10/site-packages/dagster/_core/execution/plan/execute_step.py", line 360, in core_dagster_event_sequence_for_step
+    for user_event in check.generator(
+  File "/usr/local/lib/python3.10/site-packages/dagster/_core/execution/plan/execute_step.py", line 69, in _step_output_error_checked_user_event_sequence
+    for user_event in user_event_sequence:
+  File "/usr/local/lib/python3.10/site-packages/dagster/_core/execution/plan/compute.py", line 174, in execute_core_compute
+    for step_output in _yield_compute_results(step_context, inputs, compute_fn):
+  File "/usr/local/lib/python3.10/site-packages/dagster/_core/execution/plan/compute.py", line 142, in _yield_compute_results
+    for event in iterate_with_context(
+  File "/usr/local/lib/python3.10/site-packages/dagster/_utils/__init__.py", line 430, in iterate_with_context
+    next_output = next(iterator)
+  File "/usr/local/lib/python3.10/site-packages/dagster/_core/execution/plan/compute_generator.py", line 74, in _coerce_solid_compute_fn_to_iterator
+    result = fn(context, **kwargs) if context_arg_provided else fn(**kwargs)
+  File "/Users/diego/my-dagster-project/my_dagster_project/assets/__init__.py", line 16, in github_stargazers
+    return list(context.resources.github_api.get_repo("dagster-io/dagster").get_stargazers_with_dates())
+  File "/usr/local/lib/python3.10/site-packages/github/MainClass.py", line 330, in get_repo
+    headers, data = self.__requester.requestJsonAndCheck("GET", url)
+  File "/usr/local/lib/python3.10/site-packages/github/Requester.py", line 354, in requestJsonAndCheck
+    *self.requestJson(
+  File "/usr/local/lib/python3.10/site-packages/github/Requester.py", line 454, in requestJson
+    return self.__requestEncode(cnx, verb, url, parameters, headers, input, encode)
+  File "/usr/local/lib/python3.10/site-packages/github/Requester.py", line 528, in __requestEncode
+    status, responseHeaders, output = self.__requestRaw(
+  File "/usr/local/lib/python3.10/site-packages/github/Requester.py", line 555, in __requestRaw
+    response = cnx.getresponse()
+  File "/usr/local/lib/python3.10/site-packages/github/Requester.py", line 127, in getresponse
+    r = verb(
+  File "/usr/local/lib/python3.10/site-packages/requests/sessions.py", line 600, in get
+    return self.request("GET", url, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/requests/sessions.py", line 577, in request
+    settings = self.merge_environment_settings(
+  File "/usr/local/lib/python3.10/site-packages/requests/sessions.py", line 759, in merge_environment_settings
+    env_proxies = get_environ_proxies(url, no_proxy=no_proxy)
+  File "/usr/local/lib/python3.10/site-packages/requests/utils.py", line 825, in get_environ_proxies
+    if should_bypass_proxies(url, no_proxy=no_proxy):
+  File "/usr/local/lib/python3.10/site-packages/requests/utils.py", line 809, in should_bypass_proxies
+    bypass = proxy_bypass(parsed.hostname)
+  File "/usr/local/Cellar/python@3.10/3.10.6_1/Frameworks/Python.framework/Versions/3.10/lib/python3.10/urllib/request.py", line 2649, in proxy_bypass
+    return proxy_bypass_macosx_sysconf(host)
+  File "/usr/local/Cellar/python@3.10/3.10.6_1/Frameworks/Python.framework/Versions/3.10/lib/python3.10/urllib/request.py", line 2626, in proxy_bypass_macosx_sysconf
+    return _proxy_bypass_macosx_sysconf(host, proxy_settings)
+  File "/usr/local/Cellar/python@3.10/3.10.6_1/Frameworks/Python.framework/Versions/3.10/lib/python3.10/urllib/request.py", line 2594, in _proxy_bypass_macosx_sysconf
+    hostIP = socket.gethostbyname(hostonly)
+  File "/usr/local/lib/python3.10/site-packages/dagster/_utils/interrupts.py", line 74, in _new_signal_handler
+    raise error_cls()
+[0m
